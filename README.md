@@ -6,7 +6,7 @@ Moonterm is a simple vte terminal in lua
 ![screenshot](https://i.imgur.com/8DdFbxr.png)
 
 ## Installation
-Note: in order to install moonterm you need to have [luastatic](https://github.com/ers35/luastatic) installed
+Note: in order to install `moonterm` you need to have [luastatic](https://github.com/ers35/luastatic) installed
 
 ```
 git clone https://github.com/moonsteal/moonterm.git
