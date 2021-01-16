@@ -10,10 +10,15 @@ local term			= Vte.Terminal()
 
 local scroll		= Gtk.ScrolledWindow()
 local main_window	= Gtk.Window {
-	title 			= 'MoonTerm',
 	width_request	= 600,
 	height_request	= 400,
 	scroll
+}
+
+local headerbar		= Gtk.HeaderBar {
+	title = 'MoonTerm',
+	subtitle = 'a simple vte terminal in lua',
+	show_close_button = true
 }
 
 function term:on_child_exited()
@@ -34,6 +39,7 @@ function app:on_activate()
 		function() end
     )
   
+	main_window:set_titlebar(headerbar)
 	scroll:add(term)
 	main_window.set_icon_name(main_window,'terminal')
 	main_window:show_all()
