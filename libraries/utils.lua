@@ -7,7 +7,7 @@
 --]]
 
 local utils = {}
-local shell = os.getenv("SHELL") or "/bin/bash"
+local shell = os.getenv("SHELL") or "/bin/sh"
 
 function utils:create_config(dir,filename)
 	local config_dir = ('%s/%s'):format(GLib.get_user_config_dir(), dir)
