@@ -8,11 +8,15 @@
 
 local utils = {}
 
-function utils:create_config(dir,file)
+function utils:create_config(dir,filename)
 	local config_dir = ('%s/%s'):format(GLib.get_user_config_dir(), dir)
-	if not utils:isfile(('%s/moonterm.ini'):format(config_dir)) then
+	local filename = ('%s/%s'):format(config_dir, filename)
+	if not utils:isfile(filename) then
 		os.execute( ('mkdir -p %s'):format(config_dir) )
-		os.execute( ('cp %s %s'):format(file,config_dir) )
+		text = "[interpreter]\nexecutable =/bin/bash\n"
+		file = assert(io.open(filename,'w'), 'Error loading file : ' .. filename)
+		file:write(text)
+		file:close()
 	end
 end
 
