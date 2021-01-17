@@ -56,12 +56,12 @@ function app:on_activate()
 	term:spawn_sync(
 		Vte.PtyFlags.DEFAULT,
 		nil,
-		{ conf.interpreter.executable or '/bin/bash' },
+		{ conf.interpreter.executable },
 		nil,
 		GLib.SpawnFlags.DEFAULT,
 		function() end
     )
-	dialog_config.child.entry_interpreter.text = conf.interpreter.executable or '/bin/bash'
+	dialog_config.child.entry_interpreter.text = conf.interpreter.executable
 	main_window:set_titlebar(headerbar)
 	scroll:add(term)
 	main_window.set_icon_name(main_window,'terminal')
