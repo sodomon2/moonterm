@@ -1,0 +1,15 @@
+.Header {
+  border-bottom: none;
+  background: alpha(@theme_bg_color, 0);
+  box-shadow: none;
+}
+
+.Header > * {
+  border: none;
+  background: alpha(@theme_bg_color, 0);
+  box-shadow: none;
+}
+
+.Terminal {
+  padding-top: 50px;
+}
