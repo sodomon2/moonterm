@@ -3,7 +3,7 @@ Moonterm is a simple vte terminal in lua
 
 ## Screenshot
 
-![screenshot](https://i.imgur.com/8DdFbxr.png)
+![screenshot](https://i.imgur.com/iGihl3z.png)
 
 ## Installation
 Note: in order to install `moonterm` you need to have [luastatic](https://github.com/ers35/luastatic) installed
