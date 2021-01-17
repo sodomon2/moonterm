@@ -5,8 +5,11 @@ LUA_INCLUDE ?= /usr/include/$(LUA)
 PREFIX ?= /usr/local
 DESTDIR ?= $(PREFIX)/bin
 
+SRC = moonterm.lua moonterm-dialog.lua libraries/LIP.lua libraries/utils.lua
+
 moonterm: 
-	$(LUASTATIC) moonterm.lua -l$(LUA) -I$(LUA_INCLUDE)
+	$(LUASTATIC) $(SRC) -l$(LUA) -I$(LUA_INCLUDE)
+	@strip moonterm
 
 install:
 	install -m775 moonterm $(DESTDIR)
