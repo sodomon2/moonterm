@@ -44,6 +44,14 @@ headerbar    = Gtk.HeaderBar {
     }
 }
 
+interpreter_name = utils:path_name(conf.interpreter.executable)['name']
+if conf.interpreter.executable == '/bin/sh' then
+	headerbar.title = 'Moonterm'
+else
+	headerbar.title = ('Moonterm - %s'):format(interpreter_name)
+	headerbar.subtitle = ('Moonterm using : %s interpreter'):format(interpreter_name)
+end
+
 function term:on_child_exited()
 	app:quit()
 end
