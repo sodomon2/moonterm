@@ -8,6 +8,7 @@
  @date      16.01.2021 23:52:45 -04
 --]]
 
+shell 				= os.getenv("SHELL") or "/bin/sh"
 inifile				= require("libraries.LIP")
 utils				= require("libraries.utils")
 
@@ -45,7 +46,7 @@ headerbar    = Gtk.HeaderBar {
 }
 
 interpreter_name = utils:path_name(conf.interpreter.executable)['name']
-if conf.interpreter.executable == '/bin/sh' then
+if conf.interpreter.executable == shell then
 	headerbar.title = 'Moonterm'
 else
 	headerbar.title = ('Moonterm - %s'):format(interpreter_name)
