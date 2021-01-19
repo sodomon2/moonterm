@@ -1,5 +1,5 @@
 # MoonTerm
-Moonterm is a simple vte terminal in lua
+Moonterm is a minimalist and customizable terminal in lua
 
 ## Screenshot
 
