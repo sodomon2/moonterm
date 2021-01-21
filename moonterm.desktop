@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=moonterm
+Comment=Moonterm is a minimalist and customizable terminal in lua
+Exec=moonterm
+Icon=terminal
+Terminal=false
+Type=Application
+Categories=GTK;System;Utility;TerminalEmulator;
