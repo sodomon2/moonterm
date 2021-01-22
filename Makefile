@@ -3,7 +3,7 @@ LUA ?= lua5.1
 LUA_INCLUDE ?= /usr/include/$(LUA)
 
 PREFIX ?= /usr/local
-DESTDIR ?= $(PREFIX)/bin
+BINDIR ?= $(PREFIX)/bin
 DESKTOP_DIR ?= $(PREFIX)/share/applications
 
 SRC = moonterm.lua src/moonterm-dialog.lua src/moonterm-app.lua  \
@@ -14,12 +14,12 @@ moonterm:
 	@strip moonterm
 
 install:
-	install -m775 moonterm $(DESTDIR)
-	install -m775 moonterm.desktop $(DESKTOP_DIR)
+	install -Dm644 moonterm $(DESTDIR)$(BINDIR)/moonterm
+	install -Dm644 moonterm.desktop $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
 
 uninstall:
-	rm -r $(DESTDIR)/moonterm
-	rm -r $(DESKTOP_DIR)/moonterm.desktop
+	rm -r $(DESTDIR)$(BINDIR)/moonterm
+	rm -r $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
 
 clean:
 	rm -r moonterm.luastatic.c
