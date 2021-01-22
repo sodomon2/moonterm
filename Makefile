@@ -14,8 +14,8 @@ moonterm:
 	@strip moonterm
 
 install:
-	install -Dm644 moonterm $(DESTDIR)$(BINDIR)/moonterm
-	install -Dm644 moonterm.desktop $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
+	install -Dm775 moonterm $(DESTDIR)$(BINDIR)/moonterm
+	install -Dm775 moonterm.desktop $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
 
 uninstall:
 	rm -r $(DESTDIR)$(BINDIR)/moonterm
