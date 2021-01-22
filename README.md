@@ -3,7 +3,7 @@ Moonterm is a minimalist and customizable terminal in lua
 
 ## Screenshot
 
-![screenshot](https://i.imgur.com/iGihl3z.png)
+![screenshot](https://i.imgur.com/kMVRerr.png)
 
 ## Installation
 Note: in order to install `moonterm` you need to have [luastatic](https://github.com/ers35/luastatic) installed

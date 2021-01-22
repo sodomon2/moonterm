@@ -30,7 +30,7 @@ main_window	= Gtk.Window {
 
 headerbar    = Gtk.HeaderBar {
 	title 	 = 'MoonTerm',
-	subtitle = 'a simple vte terminal in lua',
+	subtitle = 'a minimalist and customizable terminal in lua',
 	show_close_button = true,
     Gtk.MenuButton {
 		visible = true,
