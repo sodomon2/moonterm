@@ -6,7 +6,8 @@ PREFIX ?= /usr/local
 DESTDIR ?= $(PREFIX)/bin
 DESKTOP_DIR ?= $(PREFIX)/share/applications
 
-SRC = moonterm.lua moonterm-dialog.lua libraries/LIP.lua libraries/utils.lua
+SRC = moonterm.lua src/moonterm-dialog.lua src/moonterm-app.lua  \
+	src/moonterm-popover.lua libraries/LIP.lua libraries/utils.lua
 
 moonterm: 
 	$(LUASTATIC) $(SRC) -l$(LUA) -I$(LUA_INCLUDE)
