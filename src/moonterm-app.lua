@@ -40,12 +40,12 @@ headerbar    = Gtk.HeaderBar {
     }
 }
 
-interpreter_name = utils:path_name(conf.interpreter.executable)['name']
-if conf.interpreter.executable == shell then
+interpreter = utils:path_name(conf.moonterm.interpreter)['name']
+if conf.moonterm.interpreter == shell then
 	headerbar.title = 'Moonterm'
 else
-	headerbar.title = ('Moonterm - %s'):format(interpreter_name)
-	headerbar.subtitle = ('Moonterm using : %s interpreter'):format(interpreter_name)
+	headerbar.title = ('Moonterm - %s'):format(interpreter)
+	headerbar.subtitle = ('Moonterm using : %s interpreter'):format(interpreter)
 end
 
 function term:on_child_exited()
@@ -60,12 +60,12 @@ function app:on_activate()
 	term:spawn_sync(
 		Vte.PtyFlags.DEFAULT,
 		nil,
-		{ conf.interpreter.executable },
+		{ conf.moonterm.interpreter },
 		nil,
 		GLib.SpawnFlags.DEFAULT,
 		function() end
     )
-	dialog_config.child.entry_interpreter.text = conf.interpreter.executable
+	dialog_config.child.entry_interpreter.text = conf.moonterm.interpreter
 	main_window:set_titlebar(headerbar)
 	scroll:add(term)
 	main_window.set_icon_name(main_window,'terminal')

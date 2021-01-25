@@ -69,7 +69,7 @@ function LIP:save(fileName, data)
 	for section, param in pairs(data) do
 		contents = contents .. ('[%s]\n'):format(section);
 		for key, value in pairs(param) do
-			contents = contents .. ('%s =%s\n'):format(key, tostring(value));
+			contents = contents .. ('%s=%s\n'):format(key, tostring(value));
 		end
 		contents = contents .. '\n';
 	end

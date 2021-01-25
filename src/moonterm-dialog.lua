@@ -33,7 +33,7 @@ button_box = Gtk.Box {
         id = 'btn_apply',
         label = "Apply",
         on_clicked = function ()
-			conf.interpreter.executable = content.child.entry_interpreter.text
+			conf.moonterm.interpreter = content.child.entry_interpreter.text
 			inifile:save(('%s/moonterm.ini'):format(dir), conf)
 			dialog_config:hide()
 		end
