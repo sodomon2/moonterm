@@ -12,15 +12,34 @@ dialog_config = Gtk.Dialog {
 }
 
 content = Gtk.Box {
-	orientation = 'HORIZONTAL',
-	spacing = 5,
-	border_width = 5,
-	Gtk.Label {
-		label = " Interpreter : ",
-		use_markup = true,
+	orientation = 'VERTICAL',
+	Gtk.Box {
+		orientation = 'HORIZONTAL',
+		spacing = 5,
+		border_width = 5,
+		Gtk.Label {
+			expand = true,
+			label = " Interpreter : ",
+			use_markup = true,
+		},
+		Gtk.Entry {
+			id = 'entry_interpreter',
+			expand = true,
+		},
 	},
-	Gtk.Entry {
-		id = 'entry_interpreter'
+	Gtk.Box {
+		orientation = 'HORIZONTAL',
+		spacing = 5,
+		border_width = 5,
+		Gtk.Label {
+			expand = true,
+			label = " Font : ",
+			use_markup = true,
+		},
+		Gtk.FontButton {
+			expand = true,
+			id = 'font_chooser'
+		},
 	}
 }
 
@@ -34,6 +53,7 @@ button_box = Gtk.Box {
         label = "Apply",
         on_clicked = function ()
 			conf.moonterm.interpreter = content.child.entry_interpreter.text
+			conf.moonterm.font = content.child.font_chooser:get_font_name()
 			inifile:save(('%s/moonterm.ini'):format(dir), conf)
 			dialog_config:hide()
 		end
@@ -50,3 +70,9 @@ button_box = Gtk.Box {
 dialog_config:get_content_area():add(content)
 dialog_config:get_content_area():add(button_box)
 content.child.entry_interpreter:grab_focus()
+
+--Font
+content.child.font_chooser:set_show_size(false)
+content.child.font_chooser:set_font_name(conf.moonterm.font)
+print(conf.moonterm.font)
+

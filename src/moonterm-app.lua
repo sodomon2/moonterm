@@ -54,7 +54,7 @@ end
 
 function app:on_activate()
 	font = term:get_font()
-	--font:set_family("Camingo Code") -- Fix error when " Camingo Code " font is not available
+	font:set_family(conf.moonterm.font) -- Fix error when " Camingo Code " font is not available
 	font:set_size(font:get_size() * 1.2)
 
 	term:spawn_sync(
