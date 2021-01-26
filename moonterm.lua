@@ -14,6 +14,7 @@ utils				= require("libraries.utils")
 
 lgi					= require("lgi")
 Gtk					= lgi.require('Gtk', '3.0')
+Gdk					= lgi.require('Gdk', '3.0')
 Vte					= lgi.Vte
 GLib				= lgi.GLib
 
@@ -28,5 +29,6 @@ conf				= inifile:load(('%s/moonterm.ini'):format(dir))
 require('src.moonterm-popover')
 require('src.moonterm-app')
 require('src.moonterm-dialog')
+require('src.moonterm-keybinds')
 
 app:run()
