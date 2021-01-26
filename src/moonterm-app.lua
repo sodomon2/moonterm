@@ -7,18 +7,14 @@
 --]]
 
 about_window  = Gtk.AboutDialog ({
-	version   = '2.0',
-	copyright = 'The Moonsteal Team\n Copyright © 2021',
-	comments  = 'a minimalist and customizable terminal in lua',
-	website   = 'https://github.com/moonsteal/moonterm'
-})
-
-about_window.set_program_name(about_window,'MoonTerm')
-about_window.set_logo_icon_name(about_window,'terminal')
-about_window.set_website_label(about_window,'Github')
-about_window.set_authors(about_window,{
-	'Díaz Urbaneja Víctor Diego Alejandro',
-	'The Moonsteal Team'
+	program_name   = 'Moonterm',
+	version        = '2.0',
+	copyright      = 'The Moonsteal Team\n Copyright © 2021',
+	comments  	   = 'a minimalist and customizable terminal in lua',
+	website   	   = 'https://github.com/moonsteal/moonterm',
+	website_label  = 'Github',
+	logo_icon_name = 'Terminal',
+	authors 	   = {'Díaz Urbaneja Víctor Diego Alejandro','The Moonsteal Team'}
 })
 
 scroll		= Gtk.ScrolledWindow()
@@ -55,7 +51,7 @@ end
 function app:on_activate()
 	font = term:get_font()
 	--font:set_family("Camingo Code") -- Fix error when " Camingo Code " font is not available
-	font:set_size(font:get_size() * 1.2)
+	font:set_size(font:get_size() * 1.1)
 
 	term:spawn_sync(
 		Vte.PtyFlags.DEFAULT,
