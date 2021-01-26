@@ -12,41 +12,39 @@ dialog_config = Gtk.Dialog {
 }
 
 content = Gtk.Box {
-	orientation = 'HORIZONTAL',
+	orientation = 'VERTICAL',
 	spacing = 5,
 	border_width = 5,
-	Gtk.Label {
-		label = " Interpreter : ",
-		use_markup = true,
+	Gtk.Box { 
+		orientation = 'HORIZONTAL',
+		Gtk.Label {
+			label = " Interpreter : ",
+			use_markup = true,
+		},
+		Gtk.Entry {
+			id = 'entry_interpreter'
+		}
 	},
-	Gtk.Entry {
-		id = 'entry_interpreter'
+	Gtk.Box {
+		orientation = 'HORIZONTAL',
+		homogeneous = true,
+		spacing = 5,
+		Gtk.Button {
+			id = 'btn_apply',
+			label = "Apply",
+			on_clicked = function ()
+				conf.moonterm.interpreter = content.child.entry_interpreter.text
+				inifile:save(('%s/moonterm.ini'):format(dir), conf)
+				dialog_config:hide()
+			end
+		},
+		Gtk.Button {
+			id = 'btn_cancel',
+			label = "Cancel",
+			on_clicked = function () dialog_config:hide() end,
+		}
 	}
 }
 
-button_box = Gtk.Box {
-    orientation = 'HORIZONTAL',
-    homogeneous = true,
-    spacing = 5,
-    border_width = 5,
-    Gtk.Button {
-        id = 'btn_apply',
-        label = "Apply",
-        on_clicked = function ()
-			conf.moonterm.interpreter = content.child.entry_interpreter.text
-			inifile:save(('%s/moonterm.ini'):format(dir), conf)
-			dialog_config:hide()
-		end
-    },
-    Gtk.Button {
-        id = 'btn_cancel',
-        label = "Cancel",
-        on_clicked = function ()
-		    dialog_config:hide()
-		end 
-    },
-}
-
 dialog_config:get_content_area():add(content)
-dialog_config:get_content_area():add(button_box)
 content.child.entry_interpreter:grab_focus()
