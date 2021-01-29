@@ -17,11 +17,10 @@ about_window  = Gtk.AboutDialog ({
 	authors 	   = {'Díaz Urbaneja Víctor Diego Alejandro','The Moonsteal Team'}
 })
 
-scroll		= Gtk.ScrolledWindow()
 main_window	= Gtk.Window {
 	width_request	= 600,
 	height_request	= 400,
-	scroll
+	Gtk.ScrolledWindow{id = 'scroll'}
 }
 
 headerbar    = Gtk.HeaderBar {
@@ -30,6 +29,7 @@ headerbar    = Gtk.HeaderBar {
 	show_close_button = true,
     Gtk.MenuButton {
 		visible = true,
+		can_focus = false,
 		popover = popover_menu,
 		on_clicked = function () popover_menu:show_all() end,
 		Gtk.Image({icon_name = "gtk-justify-fill"})
@@ -63,7 +63,7 @@ function app:on_activate()
     )
 	dialog_config.child.entry_interpreter.text = conf.moonterm.interpreter
 	main_window:set_titlebar(headerbar)
-	scroll:add(term)
+	main_window.child.scroll:add(term)
 	main_window.set_icon_name(main_window,'terminal')
 	main_window:show_all()
 	self:add_window(main_window)
