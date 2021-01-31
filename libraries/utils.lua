@@ -13,7 +13,7 @@ function utils:create_config(dir,filename)
 	local filename = ('%s/%s'):format(config_dir, filename)
 	if not utils:isfile(filename) then
 		os.execute( ('mkdir -p %s'):format(config_dir) )
-		text = ("[moonterm]\ninterpreter=%s\nquake_mode=on\n"):format(shell)
+		text = ("[moonterm]\ninterpreter=%s\nquake_mode=false\n"):format(shell)
 		file = assert(io.open(filename,'w'), 'Error loading file : ' .. filename)
 		file:write(text)
 		file:close()
