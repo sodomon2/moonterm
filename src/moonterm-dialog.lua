@@ -25,6 +25,17 @@ content = Gtk.Box {
 			id = 'entry_interpreter'
 		}
 	},
+	Gtk.Box { 
+		orientation = 'HORIZONTAL',
+		spacing = 5,
+		border_width = 5,
+		Gtk.Label {
+			label = " Quake Mode : "
+		},
+		Gtk.Switch {
+			id = 'quake_switch'
+		}
+	},
 	Gtk.Box {
 		orientation = 'HORIZONTAL',
 		homogeneous = true,
@@ -34,6 +45,7 @@ content = Gtk.Box {
 			label = "Apply",
 			on_clicked = function ()
 				conf.moonterm.interpreter = content.child.entry_interpreter.text
+				conf.moonterm.quake_mode = content.child.quake_switch:get_active()
 				inifile:save(('%s/moonterm.ini'):format(dir), conf)
 				dialog_config:hide()
 			end
@@ -48,3 +60,4 @@ content = Gtk.Box {
 
 dialog_config:get_content_area():add(content)
 content.child.entry_interpreter:grab_focus()
+content.child.quake_switch:set_active(conf.moonterm.quake_mode)

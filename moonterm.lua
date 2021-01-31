@@ -25,6 +25,10 @@ utils:create_config('moonterm','moonterm.ini')
 dir 				= ('%s/moonterm'):format(GLib.get_user_config_dir())
 conf				= inifile:load(('%s/moonterm.ini'):format(dir))
 
+if conf.moonterm.quake_mode == true then
+	Keybinder 		= lgi.require('Keybinder', '3.0')
+end
+
 -- MoonTerm
 require('src.moonterm-app')
 require('src.moonterm-menu')

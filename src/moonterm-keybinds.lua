@@ -15,6 +15,23 @@ function toggle_fullscreen()
 	end
 end
 
+function quake()
+	if conf.moonterm.quake_mode == true then
+		visible = not visible
+		if visible then
+			main_window:show_all()
+			main_window.skip_taskbar_hint = true
+		else
+			main_window:hide()
+			main_window.skip_taskbar_hint = false
+		end
+	end
+end
+
+if conf.moonterm.quake_mode == true then
+	Keybinder.bind("F12",quake)
+end
+
 keybindings = {
 	-- alphanumeric keys
 	{

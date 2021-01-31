@@ -16,6 +16,7 @@ make moonterm
 
 ## Dependencies
 
-- [Lua](https://www.lua.org/download.html) 
+- [Lua](https://www.lua.org/download.html)
 - [Lua-lgi](https://github.com/pavouk/lgi)
 - [VTE](https://github.com/GNOME/vte)
+- [Keybinder](https://github.com/kupferlauncher/keybinder/) **optional: required by quake-mode**
