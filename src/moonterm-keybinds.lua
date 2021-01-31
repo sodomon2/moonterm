@@ -27,7 +27,10 @@ function quake()
 		end
 	end
 end
-Keybinder.bind("F12",quake)
+
+if conf.moonterm.quake_mode == true then
+	Keybinder.bind("F12",quake)
+end
 
 keybindings = {
 	-- alphanumeric keys

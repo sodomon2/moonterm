@@ -15,7 +15,6 @@ utils				= require("libraries.utils")
 lgi					= require("lgi")
 Gtk					= lgi.require('Gtk', '3.0')
 Gdk					= lgi.require('Gdk', '3.0')
-Keybinder 			= lgi.require('Keybinder', '3.0')
 Vte					= lgi.Vte
 GLib				= lgi.GLib
 
@@ -25,6 +24,10 @@ term				= Vte.Terminal()
 utils:create_config('moonterm','moonterm.ini')
 dir 				= ('%s/moonterm'):format(GLib.get_user_config_dir())
 conf				= inifile:load(('%s/moonterm.ini'):format(dir))
+
+if conf.moonterm.quake_mode == true then
+	Keybinder 		= lgi.require('Keybinder', '3.0')
+end
 
 -- MoonTerm
 require('src.moonterm-app')
