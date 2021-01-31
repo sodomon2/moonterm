@@ -7,7 +7,7 @@ BINDIR ?= $(PREFIX)/bin
 DESKTOP_DIR ?= $(PREFIX)/share/applications
 
 SRC = moonterm.lua src/moonterm-dialog.lua src/moonterm-app.lua  \
-	src/moonterm-popover.lua src/moonterm-keybinds.lua libraries/LIP.lua \
+	src/moonterm-menu.lua src/moonterm-keybinds.lua libraries/LIP.lua \
 	libraries/utils.lua
 
 moonterm: 
