@@ -15,6 +15,7 @@ utils				= require("libraries.utils")
 lgi					= require("lgi")
 Gtk					= lgi.require('Gtk', '3.0')
 Gdk					= lgi.require('Gdk', '3.0')
+Keybinder 			= lgi.require('Keybinder', '3.0')
 Vte					= lgi.Vte
 GLib				= lgi.GLib
 

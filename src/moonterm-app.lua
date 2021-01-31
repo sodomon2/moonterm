@@ -58,7 +58,14 @@ function app:on_activate()
 	main_window:set_titlebar(headerbar)
 	main_window.child.scroll:add(term)
 	main_window.set_icon_name(main_window,'terminal')
-	main_window:show_all()
+	if conf.moonterm.quake_mode == true then
+		main_window.decorated = false
+		main_window:resize(Gdk.Screen.width(), Gdk.Screen.height()*(50/100))
+		main_window:set_position(0)
+		Keybinder.init()
+	else
+		main_window:show_all()
+	end
 	self:add_window(main_window)
 end
 
