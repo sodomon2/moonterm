@@ -26,14 +26,7 @@ main_window	= Gtk.Window {
 headerbar    = Gtk.HeaderBar {
 	title 	 = 'MoonTerm',
 	subtitle = 'a minimalist and customizable terminal in lua',
-	show_close_button = true,
-    Gtk.MenuButton {
-		visible = true,
-		can_focus = false,
-		popover = popover_menu,
-		on_clicked = function () popover_menu:show_all() end,
-		Gtk.Image({icon_name = "gtk-justify-fill"})
-    }
+	show_close_button = true
 }
 
 interpreter = utils:path_name(conf.moonterm.interpreter)['name']

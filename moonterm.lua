@@ -26,8 +26,8 @@ dir 				= ('%s/moonterm'):format(GLib.get_user_config_dir())
 conf				= inifile:load(('%s/moonterm.ini'):format(dir))
 
 -- MoonTerm
-require('src.moonterm-popover')
 require('src.moonterm-app')
+require('src.moonterm-menu')
 require('src.moonterm-dialog')
 require('src.moonterm-keybinds')
 
