@@ -19,11 +19,11 @@ install:
 	install -Dm775 moonterm.desktop $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
 
 uninstall:
-	rm -r $(DESTDIR)$(BINDIR)/moonterm
-	rm -r $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
+	rm -rf $(DESTDIR)$(BINDIR)/moonterm
+	rm -rf $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
 
 clean:
-	rm -r moonterm.luastatic.c
-	rm -r moonterm
+	rm -rf moonterm.luastatic.c
+	rm -rf moonterm
 
 .PHONY: moonterm
