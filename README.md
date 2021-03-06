@@ -9,7 +9,7 @@ Moonterm is a minimalist and customizable terminal in lua
 Note: in order to install `moonterm` you need to have [luastatic](https://github.com/ers35/luastatic) installed
 
 ```
-git clone https://github.com/moonsteal/moonterm.git
+git clone https://github.com/sodomon2/moonterm.git
 make moonterm
 [sudo] make install
 ```
