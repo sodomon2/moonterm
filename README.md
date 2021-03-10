@@ -6,7 +6,7 @@ Moonterm is a minimalist and customizable terminal in lua
 ![screenshot](https://github.com/sodomon2/project-screenshot/blob/master/moonterm/screenshot.png?raw=true)
 
 ## Installation
-Note: in order to install `moonterm` you need to have [luastatic](https://github.com/ers35/luastatic) installed
+> Note: in order to install `moonterm` you need to have [luastatic](https://github.com/ers35/luastatic) installed
 
 ```
 git clone https://github.com/sodomon2/moonterm.git
