@@ -8,7 +8,7 @@
 
 about_window  = Gtk.AboutDialog ({
 	program_name   = 'Moonterm',
-	version        = '2.0',
+	version        = '3.0',
 	copyright      = 'Díaz Urbaneja Víctor Diego Alejandro\n Copyright © 2021',
 	comments  	   = 'a minimalist and customizable terminal in lua',
 	website   	   = 'https://github.com/moonsteal/moonterm',
@@ -57,7 +57,8 @@ function app:on_activate()
 	dialog_config.child.entry_interpreter.text = conf.moonterm.interpreter
 	main_window:set_titlebar(headerbar)
 	main_window.child.scroll:add(term)
-	main_window.set_icon_name(main_window,'terminal')
+	main_window:set_icon_name('terminal')
+	if arg[1] then term:feed_child_binary(arg[1] .. "\n") end
 	if conf.moonterm.quake_mode == true then
 		main_window.decorated = false
 		main_window:resize(Gdk.Screen.width(), Gdk.Screen.height()*(50/100))

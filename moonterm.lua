@@ -15,8 +15,8 @@ utils				= require("libraries.utils")
 lgi					= require("lgi")
 Gtk					= lgi.require('Gtk', '3.0')
 Gdk					= lgi.require('Gdk', '3.0')
-Vte					= lgi.Vte
-GLib				= lgi.GLib
+Vte					= lgi.require('Vte', '2.91')
+GLib				= lgi.require('GLib', '2.0')
 
 app					= Gtk.Application()
 term				= Vte.Terminal()

@@ -15,7 +15,7 @@ content = Gtk.Box {
 	orientation = 'VERTICAL',
 	spacing = 5,
 	border_width = 5,
-	Gtk.Box { 
+	Gtk.Box {
 		orientation = 'HORIZONTAL',
 		Gtk.Label {
 			label = " Interpreter : ",
@@ -25,7 +25,7 @@ content = Gtk.Box {
 			id = 'entry_interpreter'
 		}
 	},
-	Gtk.Box { 
+	Gtk.Box {
 		orientation = 'HORIZONTAL',
 		spacing = 5,
 		border_width = 5,
