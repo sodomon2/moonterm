@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=moonterm
+Name=Moonterm
 Comment=Moonterm is a minimalist and customizable terminal in lua
 Exec=moonterm
 Icon=terminal

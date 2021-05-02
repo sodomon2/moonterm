@@ -16,7 +16,7 @@ moonterm:
 
 install:
 	install -Dm775 moonterm $(DESTDIR)$(BINDIR)/moonterm
-	install -Dm775 moonterm.desktop $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
+	install -Dm775 data/moonterm.desktop $(DESTDIR)$(DESKTOP_DIR)/moonterm.desktop
 
 uninstall:
 	rm -rf $(DESTDIR)$(BINDIR)/moonterm
