@@ -9,7 +9,7 @@
 about_window  = Gtk.AboutDialog ({
 	program_name   = 'Moonterm',
 	version        = '3.0',
-	copyright      = 'Díaz Urbaneja Víctor Diego Alejandro\n Copyright © 2021',
+	copyright      = 'Díaz Urbaneja Víctor Diego Alejandro\n Copyright © 2021-2022',
 	comments  	   = 'a minimalist and customizable terminal in lua',
 	website   	   = 'https://github.com/moonsteal/moonterm',
 	website_label  = 'Github',
