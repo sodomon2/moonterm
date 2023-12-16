@@ -33,6 +33,7 @@ end
 require('src.moonterm-app')
 require('src.moonterm-menu')
 require('src.moonterm-dialog')
+require('src.moonterm-tabs')
 require('src.moonterm-keybinds')
 
 app:run()

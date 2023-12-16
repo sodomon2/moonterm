@@ -20,7 +20,10 @@ about_window  = Gtk.AboutDialog ({
 main_window	= Gtk.Window {
 	width_request	= 600,
 	height_request	= 400,
-	Gtk.ScrolledWindow{id = 'scroll'}
+	Gtk.Notebook {
+		id = 'notebook',
+		Gtk.ScrolledWindow{id = 'scroll'}
+	}
 }
 
 headerbar    = Gtk.HeaderBar {
