@@ -37,7 +37,8 @@ keybindings = {
 	{
 		[Gdk.KEY_C] = function () term:copy_clipboard() end,
 		[Gdk.KEY_V] = function () term:paste_clipboard() end,
-		[Gdk.KEY_Q] = function () app:quit() end
+		[Gdk.KEY_Q] = function () app:quit() end,
+		[Gdk.KEY_T] = function () create_tabs() end
 	},
 	-- function keys
 	{
