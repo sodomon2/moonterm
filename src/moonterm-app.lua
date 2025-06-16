@@ -42,9 +42,11 @@ function term:on_child_exited()
 end
 
 function app:on_activate()
-	font = term:get_font()
-	--font:set_family("Camingo Code") -- Fix error when " Camingo Code " font is not available
-	font:set_size(font:get_size() * 1.1)
+	-- Set terminal font from config
+	local font_desc = Pango.FontDescription()
+	font_desc:set_family(conf.moonterm.font_family or 'Monospace')
+	font_desc:set_size((tonumber(conf.moonterm.font_size) or 12) * Pango.SCALE)
+	term:set_font(font_desc)
 
 	term:spawn_sync(
 		Vte.PtyFlags.DEFAULT,
