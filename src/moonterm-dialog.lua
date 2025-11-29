@@ -2,13 +2,14 @@
  @package   MoonTerm
  @filename  moonterm-dialog.lua
  @version   1.0
- @author    Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
+ @author    Diaz Urbaneja Victor Diego Alejandro <sodomon.dev@gmail.com>
  @date      17.01.2021 00:52:45 -04
 --]]
 
 dialog_config = Gtk.Dialog {
 	title = "Preferences",
-	resizable = false
+	resizable = false,
+	hide_on_close = true
 }
 
 entry_interpreter = Gtk.Entry()

@@ -2,64 +2,134 @@
  @package   MoonTerm
  @filename  moonterm-menu.lua
  @version   1.0
- @autor     Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
+ @autor     Diaz Urbaneja Victor Diego Alejandro <sodomon.dev@gmail.com>
  @date      30.01.2021 19:54:09 -04
 ]]
 
-function main_window:on_button_press_event(event)	
-	if (event.type == 'BUTTON_PRESS' and event.button == 3) then
-		menu = Gtk.Menu {
-			Gtk.ImageMenuItem {
-				label = "Copy",
-				image = Gtk.Image {
-					stock = "gtk-copy"
-				},
-				on_activate = function()
-					term:copy_clipboard()
-				end
-			},
-			Gtk.ImageMenuItem {
-				label = "Paste",
-				image = Gtk.Image {
-					stock = "gtk-paste"
-				},
-				on_activate = function()
-					term:paste_clipboard()
-				end
-			},
-			Gtk.SeparatorMenuItem {},
-			Gtk.ImageMenuItem {
-				label = "About Moonterm",
-				image = Gtk.Image {
-					stock = "gtk-about"
-				},
-				on_activate = function()
-					about_window:run()
-					about_window:hide()
-				end
-			},
-			Gtk.ImageMenuItem {
-				label = "Preferences",
-				image = Gtk.Image {
-					stock = "gtk-preferences"
-				},
-				on_activate = function()
-					dialog_config:show_all()
-				end
-			},
-			Gtk.SeparatorMenuItem {},
-			Gtk.ImageMenuItem {
-				label = "Quit",
-				image = Gtk.Image {
-					stock = "gtk-quit"
-				},
-				on_activate = function()
-					app:quit()
-				end
-			}
-		}
-		menu:attach_to_widget(main_window, null)
-		menu:show_all()
-		menu:popup(nil, nil, nil, event.button, event.time)
+local gesture_click = Gtk.GestureClick()
+gesture_click:set_button(Gdk.BUTTON_SECONDARY)
+main_window:add_controller(gesture_click)
+
+local context_menu = Gtk.Popover()
+context_menu:set_parent(main_window)
+context_menu:set_has_arrow(false)
+
+local function create_menu_button(icon_name, label_text, action_callback)
+	local button = Gtk.Button()
+	button:add_css_class("flat")
+	
+	local box = Gtk.Box {
+		orientation = Gtk.Orientation.HORIZONTAL,
+		spacing = 4,
+		margin_start = 4,
+		margin_end = 4,
+		margin_top = 4,
+		margin_bottom = 4
+	}
+	
+	local icon = Gtk.Image.new_from_icon_name(icon_name)
+	icon:set_icon_size(Gtk.IconSize.NORMAL)
+	
+	local label = Gtk.Label {
+		label = label_text,
+		xalign = 0
+	}
+	
+	box:append(icon)
+	box:append(label)
+	button:set_child(box)
+	
+	if action_callback then
+		function button:on_clicked()
+			action_callback()
+		end
 	end
+	
+	return button
+end
+
+local menu_box = Gtk.Box {
+	orientation = Gtk.Orientation.VERTICAL,
+	spacing = 0,
+	margin_top = 4,
+	margin_bottom = 4,
+	margin_start = 4,
+	margin_end = 4
+}
+
+local copy_button = create_menu_button(
+	"gtk-copy",
+	"Copy",
+	function()
+		term:copy_clipboard()
+		context_menu:popdown()
+	end
+)
+
+local paste_button = create_menu_button(
+	"gtk-paste",
+	"Paste",
+	function()
+		term:paste_clipboard()
+		context_menu:popdown()
+	end
+)
+
+local separator1 = Gtk.Separator {
+	orientation = Gtk.Orientation.HORIZONTAL,
+	margin_top = 4,
+	margin_bottom = 4
+}
+
+local preferences_button = create_menu_button(
+	"gtk-preferences",
+	"Preferences",
+	function()
+		dialog_config:show()
+		context_menu:popdown()
+	end
+)
+
+local about_button = create_menu_button(
+	"gtk-about",
+	"About Moonterm",
+	function()
+		about_window:show()
+		context_menu:popdown()
+	end
+)
+
+local separator2 = Gtk.Separator {
+	orientation = Gtk.Orientation.HORIZONTAL,
+	margin_top = 4,
+	margin_bottom = 4
+}
+
+local quit_button = create_menu_button(
+	"application-exit",
+	"Quit",
+	function()
+		app:quit()
+	end
+)
+
+menu_box:append(copy_button)
+menu_box:append(paste_button)
+menu_box:append(separator1)
+menu_box:append(preferences_button)
+menu_box:append(about_button)
+menu_box:append(separator2)
+menu_box:append(quit_button)
+
+context_menu:set_child(menu_box)
+
+function gesture_click:on_released(n_press, x, y, data)
+	local pointing_rect = Gdk.Rectangle()
+	pointing_rect.x = math.floor(x - 100)
+	pointing_rect.y = math.floor(y)
+	pointing_rect.width = 1
+	pointing_rect.height = 1
+
+	context_menu:set_pointing_to(pointing_rect)
+	context_menu:popup()
 end

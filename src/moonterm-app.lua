@@ -2,10 +2,11 @@
  @package   MoonTerm
  @filename  moonterm-app.lua
  @version   1.0
- @author    Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
+ @author    Diaz Urbaneja Victor Diego Alejandro <sodomon.dev@gmail.com>
  @date      22.01.2021 01:34:58 -04
 --]]
 
+main_window = Gtk.Window()
 about_window  = Gtk.AboutDialog ({
 	program_name   = 'Moonterm',
 	version        = '4.0',
@@ -14,14 +15,14 @@ about_window  = Gtk.AboutDialog ({
 	website   	   = 'https://github.com/moonsteal/moonterm',
 	website_label  = 'Github',
 	logo_icon_name = 'Terminal',
-	authors 	     = {'Díaz Urbaneja Víctor Diego Alejandro'}
+	authors 	     = {'Díaz Urbaneja Víctor Diego Alejandro'},
+	hide_on_close  = true
 })
 
 function term:on_child_exited()
 	app:quit()
 end
 
-main_window = Gtk.Window()
 function app:on_activate()
 	local scroll = Gtk.ScrolledWindow()
 
@@ -48,7 +49,7 @@ function app:on_activate()
 		GLib.SpawnFlags.DEFAULT,
 		function() end
 	)
-	-- dialog_config.child.entry_interpreter.text = conf.moonterm.interpreter
+	entry_interpreter.text = conf.moonterm.interpreter
 	if arg[1] then term:feed_child_binary(arg[1] .. "\n") end
 	-- if conf.moonterm.quake_mode == true then
 	-- 	main_window.decorated = false

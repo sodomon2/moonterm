@@ -4,7 +4,7 @@
  @package   MoonTerm
  @filename  moonterm.lua
  @version   1.0
- @author    Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
+ @author    Diaz Urbaneja Victor Diego Alejandro <sodomon.dev@gmail.com>
  @date      16.01.2021 23:52:45 -04
 --]]
 
@@ -32,7 +32,7 @@ end
 
 -- MoonTerm
 require('src.moonterm-app')
--- require('src.moonterm-menu')
+require('src.moonterm-menu')
 require('src.moonterm-dialog')
 -- require('src.moonterm-keybinds')
 
