@@ -51,12 +51,15 @@ function app:on_activate()
 	)
 	entry_interpreter.text = conf.moonterm.interpreter
 	if arg[1] then term:feed_child_binary(arg[1] .. "\n") end
+
+
 	-- if conf.moonterm.quake_mode == true then
 	-- 	main_window.decorated = false
 	-- 	main_window:resize(Gdk.Screen.width(), Gdk.Screen.height()*(50/100))
 	-- 	main_window:set_position(0)
 	-- 	-- Keybinder.init()
 	-- end
+	
 end
 
 function app:on_activate()

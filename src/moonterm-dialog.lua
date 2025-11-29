@@ -13,7 +13,7 @@ dialog_config = Gtk.Dialog {
 }
 
 entry_interpreter = Gtk.Entry()
-quake_switch = Gtk.Switch()
+-- quake_switch = Gtk.Switch()
 
 content = Gtk.Box {
 	orientation = 'VERTICAL',
@@ -26,14 +26,16 @@ content = Gtk.Box {
 		},
 		entry_interpreter
 	},
-	Gtk.Box {
-		orientation = 'HORIZONTAL',
-		spacing = 5,
-		Gtk.Label {
-			label = " Quake Mode : "
-		},
-		quake_switch
-	},
+
+	-- Gtk.Box {
+	-- 	orientation = 'HORIZONTAL',
+	-- 	spacing = 5,
+	-- 	Gtk.Label {
+	-- 		label = " Quake Mode : "
+	-- 	},
+	-- 	quake_switch
+	-- },
+
 	Gtk.Box {
 		orientation = 'HORIZONTAL',
 		homogeneous = true,
@@ -43,7 +45,7 @@ content = Gtk.Box {
 			label = "Apply",
 			on_clicked = function ()
 				conf.moonterm.interpreter = entry_interpreter.text
-				conf.moonterm.quake_mode = quake_switch:get_active()
+				-- conf.moonterm.quake_mode = quake_switch:get_active()
 				inifile:save(('%s/moonterm.ini'):format(dir), conf)
 				dialog_config:hide()
 			end
@@ -56,6 +58,6 @@ content = Gtk.Box {
 	}
 }
 
+-- quake_switch:set_active(conf.moonterm.quake_mode)
 dialog_config:get_content_area():append(content)
 entry_interpreter:grab_focus()
-quake_switch:set_active(conf.moonterm.quake_mode)
