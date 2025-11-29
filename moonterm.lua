@@ -12,7 +12,7 @@ shell 			= os.getenv("SHELL") or "/bin/sh"
 inifile			= require("libraries.LIP")
 utils				= require("libraries.utils")
 
-local lgi					= require("lgi")
+local lgi		= require("lgi")
 Gtk					= lgi.require('Gtk', '4.0')
 Gdk					= lgi.require('Gdk', '4.0')
 Vte					= lgi.require('Vte', '3.91')
@@ -33,7 +33,7 @@ end
 -- MoonTerm
 require('src.moonterm-app')
 -- require('src.moonterm-menu')
--- require('src.moonterm-dialog')
+require('src.moonterm-dialog')
 -- require('src.moonterm-keybinds')
 
 app:run()

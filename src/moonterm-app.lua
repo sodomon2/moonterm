@@ -21,8 +21,8 @@ function term:on_child_exited()
 	app:quit()
 end
 
+main_window = Gtk.Window()
 function app:on_activate()
-	local main_window = Gtk.ApplicationWindow.new(self)
 	local scroll = Gtk.ScrolledWindow()
 
 	local headerbar    = Gtk.HeaderBar()
@@ -49,7 +49,7 @@ function app:on_activate()
 		function() end
 	)
 	-- dialog_config.child.entry_interpreter.text = conf.moonterm.interpreter
-	-- if arg[1] then term:feed_child_binary(arg[1] .. "\n") end
+	if arg[1] then term:feed_child_binary(arg[1] .. "\n") end
 	-- if conf.moonterm.quake_mode == true then
 	-- 	main_window.decorated = false
 	-- 	main_window:resize(Gdk.Screen.width(), Gdk.Screen.height()*(50/100))
@@ -59,5 +59,6 @@ function app:on_activate()
 end
 
 function app:on_activate()
-	self.active_window:present()
+	self:add_window(main_window)
+	main_window:present()
 end
