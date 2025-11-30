@@ -34,6 +34,6 @@ conf				= inifile:load(('%s/moonterm.ini'):format(dir))
 require('src.moonterm-app')
 require('src.moonterm-menu')
 require('src.moonterm-dialog')
--- require('src.moonterm-keybinds')
+require('src.moonterm-keybinds')
 
 app:run()
