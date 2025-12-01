@@ -4,30 +4,31 @@
  @package   MoonTerm
  @filename  moonterm.lua
  @version   1.0
- @author    Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
+ @author    Diaz Urbaneja Victor Diego Alejandro <sodomon.dev@gmail.com>
  @date      16.01.2021 23:52:45 -04
 --]]
 
-shell 				= os.getenv("SHELL") or "/bin/sh"
-inifile				= require("libraries.LIP")
+shell 			= os.getenv("SHELL") or "/bin/sh"
+inifile			= require("libraries.LIP")
 utils				= require("libraries.utils")
 
-lgi					= require("lgi")
-Gtk					= lgi.require('Gtk', '3.0')
-Gdk					= lgi.require('Gdk', '3.0')
-Vte					= lgi.require('Vte', '2.91')
+local lgi		= require("lgi")
+Gtk					= lgi.require('Gtk', '4.0')
+Gdk					= lgi.require('Gdk', '4.0')
+Vte					= lgi.require('Vte', '3.91')
 GLib				= lgi.require('GLib', '2.0')
+Gio					= lgi.require('Gio', '2.0')
 
-app					= Gtk.Application()
+app 				= Gtk.Application.new("com.github.sodomon2.moonterm", Gio.ApplicationFlags.DEFAULT_FLAGS)
 term				= Vte.Terminal()
 
 utils:create_config('moonterm','moonterm.ini')
 dir 				= ('%s/moonterm'):format(GLib.get_user_config_dir())
 conf				= inifile:load(('%s/moonterm.ini'):format(dir))
 
-if conf.moonterm.quake_mode == true then
-	Keybinder 		= lgi.require('Keybinder', '3.0')
-end
+-- if conf.moonterm.quake_mode == true then
+-- 	Keybinder = lgi.require('Keybinder', '3.0')
+-- end
 
 -- MoonTerm
 require('src.moonterm-app')

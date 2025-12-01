@@ -15,22 +15,22 @@ function toggle_fullscreen()
 	end
 end
 
-function quake()
-	if conf.moonterm.quake_mode == true then
-		visible = not visible
-		if visible then
-			main_window:show_all()
-			main_window.skip_taskbar_hint = true
-		else
-			main_window:hide()
-			main_window.skip_taskbar_hint = false
-		end
-	end
-end
+-- function quake()
+-- 	if conf.moonterm.quake_mode == true then
+-- 		visible = not visible
+-- 		if visible then
+-- 			main_window:show_all()
+-- 			main_window.skip_taskbar_hint = true
+-- 		else
+-- 			main_window:hide()
+-- 			main_window.skip_taskbar_hint = false
+-- 		end
+-- 	end
+-- end
 
-if conf.moonterm.quake_mode == true then
-	Keybinder.bind("F12",quake)
-end
+-- if conf.moonterm.quake_mode == true then
+-- 	Keybinder.bind("F12",quake)
+-- end
 
 keybindings = {
 	-- alphanumeric keys
@@ -45,18 +45,25 @@ keybindings = {
 	}
 }
 
-function main_window:on_key_press_event(event)
-	local ctrl_on = event.state.CONTROL_MASK
-	local shift_on = event.state.SHIFT_MASK
-	alphanumeric_keys = keybindings[1][event.keyval]
-	function_keys = keybindings[2][event.keyval]
+local event_controller = Gtk.EventControllerKey.new()
+event_controller:set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
+main_window:add_controller(event_controller)
 
-	if ( alphanumeric_keys and shift_on and ctrl_on ) then
+function event_controller:on_key_pressed(keyval, keycode, state)
+	local ctrl_on = state.CONTROL_MASK or false
+	local shift_on = state.SHIFT_MASK or false
+	
+	local alphanumeric_keys = keybindings[1][keyval]
+	local function_keys = keybindings[2][keyval]
+	
+	if (alphanumeric_keys and shift_on and ctrl_on) then
 		alphanumeric_keys()
-	elseif ( function_keys and not shift_on and not ctrl_on ) then
+		return true
+	elseif (function_keys and not shift_on and not ctrl_on) then
 		function_keys()
-	else
-		return false
+		return true
 	end
-	return true
+	
+	return false
 end
+
